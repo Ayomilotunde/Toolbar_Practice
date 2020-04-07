@@ -3,11 +3,13 @@
 
     <gradient
         android:angle="45"
-        android:startColor="#000099"
-        android:centerColor="#E69292"
-        android:endColor="#000099"/>
+
+        android:startColor="@android:color/transparent"
+
+        android:endColor="@android:color/transparent"/>
 
     <corners
+
         android:topRightRadius="15dp"
         android:bottomRightRadius="15dp"
         android:bottomLeftRadius="15dp"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/CustomToolbar"
+    android:id="@+id/app_bar"
+    app:title="AYOMIDE"
+    android:layout_height="wrap_content">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/toolbar"
+        android:id="@+id/toolbar"
+        app:title="AYOMIED"
+        android:theme="@style/CustomToolbar"
+        app:logo="@drawable/ic_menu"
+        app:titleMarginStart="120dp"/>
+
+</androidx.appcompat.widget.Toolbar>
