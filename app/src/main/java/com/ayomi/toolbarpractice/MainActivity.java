@@ -1,9 +1,11 @@
 package com.ayomi.toolbarpractice;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     DataBaseHelper peopleDB;
-    Button btn_submit;
+    Button btn_submit, btn_view;
     EditText new_name;
     EditText new_date;
     EditText new_email;
@@ -33,8 +35,10 @@ public class MainActivity extends AppCompatActivity {
         new_email = findViewById(R.id.new_email);
         username = findViewById(R.id.edt_username);
         btn_submit = findViewById(R.id.btn_submit);
+        btn_view = findViewById(R.id.btn_view);
 
         AddData();
+        ViewData();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -87,6 +91,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void ViewData(){
+        btn_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor data = peopleDB.showData();
+
+
+                if(data.getCount() == 0) {
+
+                    dispplay("Error", "No Data Found");
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                while(data.moveToNext()) {
+                    buffer.append("ID: " + data.getString(0) + "\n");
+                    buffer.append("Name: " + data.getString(1) + "\n");
+                    buffer.append("E-mail: " + data.getString(2) + "\n");
+                    buffer.append("Date Of Birth: " + data.getString(3) + "\n");
+                    dispplay("All Stored Data", buffer.toString());
+                }
+
+            }
+        });
+    }
+
+    public void dispplay(String title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 
 }

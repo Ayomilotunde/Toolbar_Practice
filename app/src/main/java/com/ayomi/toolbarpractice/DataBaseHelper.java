@@ -2,6 +2,7 @@ package com.ayomi.toolbarpractice;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.EditText;
@@ -51,6 +52,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }else{
             return true;
         }
+    }
+
+    public Cursor showData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return data;
     }
 
 }

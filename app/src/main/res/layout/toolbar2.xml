@@ -17,6 +17,6 @@
         app:title="AYOMIED"
         android:theme="@style/CustomToolbar"
         app:logo="@drawable/ic_menu"
-        app:titleMarginStart="120dp"/>
+        app:titleMarginStart="40dp"/>
 
 </androidx.appcompat.widget.Toolbar>

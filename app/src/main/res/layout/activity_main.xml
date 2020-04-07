@@ -55,5 +55,11 @@
         android:layout_height="wrap_content"
         android:text="Submit" />
 
+    <Button
+        android:id="@+id/btn_view"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:text="View" />
+
 
 </LinearLayout>
