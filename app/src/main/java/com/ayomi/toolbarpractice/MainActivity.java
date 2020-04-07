@@ -17,11 +17,13 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     DataBaseHelper peopleDB;
-    Button btn_submit, btn_view;
+    Button btn_submit, btn_view, btn_update;
     EditText new_name;
     EditText new_date;
     EditText new_email;
     EditText username;
+    EditText edt_update;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.edt_username);
         btn_submit = findViewById(R.id.btn_submit);
         btn_view = findViewById(R.id.btn_view);
+        btn_update = findViewById(R.id.btn_update);
+        edt_update = findViewById(R.id.edt_update);
 
         AddData();
         ViewData();
+        UpdateData();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,12 +91,14 @@ public class MainActivity extends AppCompatActivity {
                 if (insertData == true){
                     Toast.makeText(MainActivity.this, "Data Successfully Inserted!",Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(MainActivity.this, "Something went Wrong!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Something went Wrong :(.",Toast.LENGTH_LONG).show();
                 }
             }
         });
 
     }
+
+    // to view data
 
     public void ViewData(){
         btn_view.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +131,25 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
+    }
+
+    public void UpdateData(){
+        btn_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int temp = edt_update.getText().toString().length();
+                if (temp > 0){
+                    boolean update = peopleDB.updateData(edt_update.getText().toString(),new_name.getText().toString(),new_email.getText().toString(),new_date.getText().toString());
+                    if (update == true) {
+                        Toast.makeText(MainActivity.this, "Successfully Updated Data!",Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Something went wrong :(.",Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    Toast.makeText(MainActivity.this, "You must enter an ID to Update",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
 }

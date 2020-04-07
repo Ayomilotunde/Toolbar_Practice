@@ -61,5 +61,19 @@
         android:layout_height="wrap_content"
         android:text="View" />
 
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:text="Update" />
+
+    <EditText
+        android:id="@+id/edt_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="update" />
+
 
 </LinearLayout>
