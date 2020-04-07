@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     DataBaseHelper peopleDB;
-    Button btn_submit, btn_view, btn_update;
+    Button btn_submit, btn_view, btn_update, btn_delete;
     EditText new_name;
     EditText new_date;
     EditText new_email;
@@ -40,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
         btn_view = findViewById(R.id.btn_view);
         btn_update = findViewById(R.id.btn_update);
         edt_update = findViewById(R.id.edt_update);
+        btn_delete = findViewById(R.id.btn_delete);
 
         AddData();
         ViewData();
         UpdateData();
+        DeleteData();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -151,5 +153,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+public void DeleteData(){
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int temp = edt_update.getText().toString().length();
 
+                if (temp > 0) {
+                    Integer deleteRow = peopleDB.deleteData(edt_update.getText().toString());
+                    if (deleteRow > 0) {
+                        Toast.makeText(MainActivity.this, "Successfully Deleted Data",Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Something went wrong :(.",Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this, "You must enter an ID to Delete :(.",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+}
 }
