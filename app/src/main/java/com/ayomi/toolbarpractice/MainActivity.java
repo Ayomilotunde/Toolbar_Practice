@@ -164,10 +164,10 @@ public void DeleteData(){
                     if (deleteRow > 0) {
                         Toast.makeText(MainActivity.this, "Successfully Deleted Data",Toast.LENGTH_LONG).show();
                     }else{
-                        Toast.makeText(MainActivity.this, "Something went wrong :(.",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Something went wrong.",Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(MainActivity.this, "You must enter an ID to Delete :(.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "You must enter an ID to Delete.",Toast.LENGTH_LONG).show();
                 }
             }
         });
